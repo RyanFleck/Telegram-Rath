@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/RyanFleck/Telegram-Rath#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "telegraf": "^3.30.1"
   }
 }
