@@ -1,5 +1,9 @@
 const Telegraf = require('telegraf')
- 
+const Express = require('express')
+Express().get("*", (req,res)=>{
+    res.json({message:"Hi, it's Rath."})
+}).listen(PORT, ()=>{console.log("Hello Heroku")})
+
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
 bot.start((c) => c.reply("Welcome!"));
