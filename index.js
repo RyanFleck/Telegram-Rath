@@ -1,5 +1,7 @@
 const Telegraf = require('telegraf')
 const Express = require('express')
+
+const PORT = process.env.PORT
 Express().get("*", (req,res)=>{
     res.json({message:"Hi, it's Rath."})
 }).listen(PORT, ()=>{console.log("Hello Heroku")})
