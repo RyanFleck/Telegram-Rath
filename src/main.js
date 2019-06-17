@@ -24,5 +24,9 @@ bot.hears(/^([Rr]ath)/gm, (c) => {
 })
 bot.command('marco', (c) => c.reply('Polo.'))
 
-bot.launch();
-bot.startWebhook('/secret-path', null, (process.env.PORT || 5000))
+bot.launch({
+  webhook: {
+    domain: 'https://rath.herokuapp.com',
+    port: (process.env.PORT || 5000)
+  }
+})
