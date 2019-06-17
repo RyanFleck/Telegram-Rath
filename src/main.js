@@ -13,7 +13,7 @@ bot.on('')
 bot.hears(['hi', 'hello', 'Hi', 'Hello'], (c) => c.reply(`Hello there, ${c.from.first_name}.`))
 bot.hears(/^.+([Rr]ath)/gm, (c) => {
     console.log(c.message)
-    if( c.message.slice(-1) === '?' ){
+    if( c.message.text.slice(-1) === '?' ){
         c.reply(Yes.yes())
     }else{
         c.reply('lmao')
