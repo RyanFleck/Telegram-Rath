@@ -1,7 +1,7 @@
 const Telegraf = require('telegraf')
 const Face = require('./utils/face')
 const Yes = require('./utils/yes')
-const Yes = require('./utils/haha')
+const Haha = require('./utils/haha')
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
