@@ -6,7 +6,6 @@ module.exports = class Face {
         Express().get("*", (req, res) => {
             res.json({
                 message: "Hi, it's Rath.",
-                startup_ms: `${Face.time}`
             })
         }).listen(PORT, () => { console.log("Hello Heroku") })
 
