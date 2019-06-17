@@ -5,4 +5,8 @@ module.exports = class Yes {
         var opt = Math.floor(Math.random() * (yesOptions.length - 1))
         return yesOptions[opt];
     }
+
+    static options(){
+        return yesOptions;
+    }
 }
