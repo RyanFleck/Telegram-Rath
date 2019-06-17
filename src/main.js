@@ -2,6 +2,9 @@ const Telegraf = require('telegraf')
 const Face = require('./utils/face')
 const Yes = require('./utils/yes')
 const Haha = require('./utils/haha')
+const Timing = require('./utils/timing')
+
+Timing.startingGun()
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
@@ -29,6 +32,8 @@ bot.hears(/^([Rr]ath)/gm, (c) => {
 bot.command('marco', (c) => c.reply('Polo.'))
 
 bot.launch();
+
+console.log(`Bot up in ${Timing.now()}ms`)
 
 
 // Heroku stopgap. Start last.
