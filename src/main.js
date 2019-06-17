@@ -8,9 +8,11 @@ const bot = new Telegraf(process.env.BOT_TOKEN)
 bot.start((c) => c.reply("Welcome!"));
 bot.on('sticker', (c) => c.reply('lol'))
 
+/*
 bot.on('message', (c) => {
     console.log(c.message)
 })
+*/
 
 bot.hears(['hi', 'hello', 'Hi', 'Hello'], (c) => c.reply(`Hello there, ${c.from.first_name}.`))
 bot.hears(/^.+([Rr]ath)/gm, (c) => {
