@@ -1,5 +1,5 @@
 // First jest unit test.
 
-test('adds 1 + 2 to equal 3', () => {
+test('add two and two, should make four', () => {
   expect(2+2).toBe(4);
 });

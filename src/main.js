@@ -7,8 +7,14 @@ bot.start((c) => c.reply("Welcome!"));
 bot.on('sticker', (c) => c.reply('lol'))
 
 bot.hears(['hi', 'hello', 'Hi', 'Hello'], (c) => c.reply('Hello there.'))
-bot.hears(/^.+([Rr]ath)/gm, (c) => c.reply('lmao'))
-bot.hears(/([Rr]ath)/gm, (c) => c.reply('Alright, I\'ll take a look...'))
+bot.hears(/^.+([Rr]ath)/gm, (c) => {
+    c.log()
+    c.reply('lmao')
+})
+bot.hears(/([Rr]ath)/gm, (c) => {
+    c.log()
+    c.reply('Alright, I\'ll take a look...')
+})
 bot.command('marco', (c) => c.reply('Polo.'))
 
 bot.launch();
