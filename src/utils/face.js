@@ -1,5 +1,4 @@
 const Express = require('express')
-const Timing = require('./timing')
 
 module.exports = class Face {
     static start() {
