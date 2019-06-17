@@ -1,4 +1,4 @@
-const hahaOptions = ['heh','lmao','🍆', 'hahahaha','lmao','roflmao','lol','oh man that\'s fucking hilarious','💩'];
+const hahaOptions = ['lmao','Phhblt, 🍆!', 'hahahaha','lmao','roflmao','lol','oh man that\'s fucking hilarious','💩💩💩'];
 
 module.exports = class Haha {
     static haha() {
