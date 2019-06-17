@@ -1,5 +1,7 @@
 const Telegraf = require('telegraf')
 const Face = require('./utils/face')
+const Yes = require('./utils/yes')
+
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
@@ -8,14 +10,19 @@ bot.on('sticker', (c) => c.reply('lol'))
 
 bot.on('')
 
-bot.hears(['hi', 'hello', 'Hi', 'Hello'], (c) => c.reply(`Hello there, ${c.from}.`))
+bot.hears(['hi', 'hello', 'Hi', 'Hello'], (c) => c.reply(`Hello there, ${c.from.first_name}.`))
 bot.hears(/^.+([Rr]ath)/gm, (c) => {
     console.log(c.message)
-    c.reply('lmao')
+    if( c.message.slice(-1) === '?' ){
+        c.reply(Yes.yes())
+    }else{
+        c.reply('lmao')
+    }
+    
 })
 bot.hears(/^([Rr]ath)/gm, (c) => {
     console.log(c.message)
-    c.reply('Alright, I\'ll take a look...')
+    c.reply(`Alright, I\'ll take a look, ${c.from.first_name}. One sec.`)
 })
 bot.command('marco', (c) => c.reply('Polo.'))
 
