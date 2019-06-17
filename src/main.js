@@ -1,7 +1,7 @@
 const Telegraf = require('telegraf')
 const Face = require('./utils/face')
 const Yes = require('./utils/yes')
-
+const Yes = require('./utils/haha')
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
@@ -16,7 +16,7 @@ bot.hears(/^.+([Rr]ath)/gm, (c) => {
     if( c.message.text.slice(-1) === '?' ){
         c.reply(Yes.yes())
     }else{
-        c.reply('lmao')
+        c.reply(Haha.haha())
     }
     
 })

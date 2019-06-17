@@ -1,4 +1,4 @@
-const yesOptions = ['mhm', 'yep', 'absolutely', 'yes', 'undeniably', 'hahahahaha, yeah', 'totally', 'Is this a rhetorical question?'];
+const yesOptions = ['mhm', 'yep', 'absolutely', 'yes', 'undeniably', 'hahahahaha, yeah', 'totally', 'Is this a rhetorical question?','lololol','kek','lmao yes, haha','...yes.'];
 
 module.exports = class Yes {
     static yes() {
