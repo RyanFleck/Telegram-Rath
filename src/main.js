@@ -1,7 +1,8 @@
 const Telegraf = require('telegraf')
-//const Face = require('./utils/face')
 const Yes = require('./utils/yes')
 const Haha = require('./utils/haha')
+const Haha = require('./utils/wolfram')
+
 
 console.time("start")
 
@@ -21,6 +22,7 @@ bot.hears(/^.+([Rr]ath)/gm, (c) => {
 })
 bot.hears(/^([Rr]ath)/gm, (c) => {
     c.reply(`Alright, I\'ll take a look, ${c.from.first_name}. One sec.`)
+
 })
 bot.command('marco', (c) => c.reply('Polo.'))
 
