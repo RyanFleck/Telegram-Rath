@@ -11,8 +11,6 @@ module.exports = class Wolfram {
 
         const query = `http://api.wolframalpha.com/v2/query?input=${encodeURIComponent(queryString)}&primary=true&appid=${token}`
         console.log(`Query: '${queryString}'\nAPI: ${query}`)
-        
-        botCtx.reply('Hm...')
 
         request(
             query,
