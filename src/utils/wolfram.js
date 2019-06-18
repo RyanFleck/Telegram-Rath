@@ -15,7 +15,7 @@ module.exports = class Wolfram {
         request(
             query,
             (error, response, body) => {
-                console.log(body)
+                // console.log(body)
                 const doc = xml.parseXml(body)
                 const root = doc.root()
 
@@ -38,7 +38,7 @@ module.exports = class Wolfram {
                     if (pods[1]) {
                         pods[1].find('subpod').map((subpod) => {
                             botCtx.reply(subpod.get('plaintext').text())
-                            botCtx.reply("Multiple can be sent.")
+                            // botCtx.reply("Multiple can be sent.")
                         })
                     }
                 }

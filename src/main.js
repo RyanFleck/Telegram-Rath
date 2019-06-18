@@ -21,7 +21,7 @@ bot.hears(/^.+([Rr]ath)/gm, (c) => {
     
 })
 bot.hears(/^([Rr]ath)/gm, (c) => {
-    c.reply(`Alright, I\'ll take a look, ${c.from.first_name}. One sec.`)
+    // c.reply(`Alright, I\'ll take a look, ${c.from.first_name}. One sec.`)
 
     Wolfram.query(rathxp.exec(c.message.text)[1], c)
 })
