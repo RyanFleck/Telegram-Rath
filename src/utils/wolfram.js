@@ -21,7 +21,7 @@ module.exports = class Wolfram {
 
                 if (root.attr('error').value() == 'true') {
                     botCtx.reply('Uh, not sure about that one.')
-                } else if (root.attr('error').value() == 'false') {
+                } else if (root.attr('success').value() == 'false') {
                     botCtx.reply('Hm, could you rephrase that?')
                 } else {
                     /*
