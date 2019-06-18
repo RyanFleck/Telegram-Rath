@@ -24,29 +24,24 @@ module.exports = class Wolfram {
                 } else if (root.attr('success').value() == 'false') {
                     botCtx.reply('Hm, could you rephrase that?')
                 } else {
-                    
+
+                    const pods = root.find('pod')
+
                     // Logs.
-                    root.find('pod').map((pod) => {
-                        console.log('SECTION: '+pod.attr('title').value())
+                    pods.map((pod) => {
+                        console.log('SECTION: ' + pod.attr('title').value())
                         const subpods = pod.find('subpod').map((subpod) => {
-                            console.log('SUBSC: '+subpod.attr('title').value())
-                            console.log('\t'+ subpod.get('plaintext').text())
-                            console.log('\t'+ subpod.get('img').attr('src').value())
+                            console.log('SUBSC: ' + subpod.attr('title').value())
+                            console.log('\t' + subpod.get('plaintext').text())
+                            console.log('\t' + subpod.get('img').attr('src').value())
 
                         })
                     })
 
-                    const pods = root.find('pod')
-                    if (typeof pods[1] !== 'undefined') {
-                        pods[1].find('subpod').map((subpod) => {
-                            botCtx.reply(subpod.get('plaintext').text())
-                            // botCtx.reply("Multiple can be sent.")
-                        })
-                    }else{
-                        console.log("No first pod?")
-                    }
+                    pods[1].find('subpod').map((subpod) => {
+                        botCtx.reply(subpod.get('plaintext').text())
+                    })
                 }
-
             }
         )
     }
