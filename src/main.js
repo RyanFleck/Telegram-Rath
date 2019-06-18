@@ -4,7 +4,7 @@ const Haha = require('./utils/haha')
 const Wolfram = require('./utils/wolfram')
 
 
-console.time("start")
+const rathxp = /^[Rr]ath (.*)/gm;
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
@@ -22,7 +22,8 @@ bot.hears(/^.+([Rr]ath)/gm, (c) => {
 })
 bot.hears(/^([Rr]ath)/gm, (c) => {
     c.reply(`Alright, I\'ll take a look, ${c.from.first_name}. One sec.`)
-    Wolfram.query(c.message.text, c)
+
+    Wolfram.query(rathxp.exec(c.message.text)[1], c)
 })
 bot.command('marco', (c) => c.reply('Polo.'))
 

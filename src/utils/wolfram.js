@@ -21,6 +21,8 @@ module.exports = class Wolfram {
 
                 if (root.attr('error').value() == 'true') {
                     botCtx.reply('Uh, not sure about that one.')
+                } else if (root.attr('error').value() == 'false') {
+                    botCtx.reply('Hm, could you rephrase that?')
                 } else {
                     /*
                     const pods = root.find('pod').map((pod) => {
@@ -33,10 +35,12 @@ module.exports = class Wolfram {
                         })
                     })*/
                     const pods = root.find('pod')
-                    pods[1].find('subpod').map((subpod) => {
-                        botCtx.reply(subpod.get('plaintext').text())
-                        botCtx.reply("Multiple can be sent.")
-                    })
+                    if (pods[1]) {
+                        pods[1].find('subpod').map((subpod) => {
+                            botCtx.reply(subpod.get('plaintext').text())
+                            botCtx.reply("Multiple can be sent.")
+                        })
+                    }
                 }
 
             }
