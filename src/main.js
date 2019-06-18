@@ -24,9 +24,9 @@ bot.hears(/^.+([Rr]ath)/gm, (c) => {
 })
 bot.hears(/^([Rr]ath)/gm, (c) => {
     console.log(c.message)
-    let msg = c.message.substring(5);
-    if (msg != null && msg.length > 1) {
-        Wolfram.query(msg, c)
+    let msg = c.message.text
+    if (msg != null && msg.length > 5) {
+        Wolfram.query(msg.substring(5), c)
     }else{
         c.reply(Haha.haha()+' write something')
     }
