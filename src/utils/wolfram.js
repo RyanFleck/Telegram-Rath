@@ -19,6 +19,8 @@ module.exports = class Wolfram {
                 const doc = xml.parseXml(body)
                 const root = doc.root()
 
+                botCtx.reply('Hm...')
+
                 if (root.attr('error').value() == 'true') {
                     botCtx.reply('Uh, not sure about that one.')
                 } else if (root.attr('success').value() == 'false') {
