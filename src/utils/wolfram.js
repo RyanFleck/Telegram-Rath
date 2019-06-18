@@ -24,22 +24,25 @@ module.exports = class Wolfram {
                 } else if (root.attr('success').value() == 'false') {
                     botCtx.reply('Hm, could you rephrase that?')
                 } else {
-                    /*
+                    
                     const pods = root.find('pod').map((pod) => {
-                        console.log(pod.attr('title').value())
+                        console.log('SECTION: '+pod.attr('title').value())
                         const subpods = pod.find('subpod').map((subpod) => {
-                            console.log(subpod.attr('title').value())
-                            console.log(subpod.get('plaintext').text())
-                            console.log(subpod.get('img').attr('src').value())
+                            console.log('SUBSC: '+subpod.attr('title').value())
+                            console.log('\t'+ subpod.get('plaintext').text())
+                            console.log('\t'+ subpod.get('img').attr('src').value())
 
                         })
-                    })*/
+                    })
+
                     const pods = root.find('pod')
                     if (pods[1]) {
                         pods[1].find('subpod').map((subpod) => {
                             botCtx.reply(subpod.get('plaintext').text())
                             // botCtx.reply("Multiple can be sent.")
                         })
+                    }else{
+                        console.log("No first pod?")
                     }
                 }
 
