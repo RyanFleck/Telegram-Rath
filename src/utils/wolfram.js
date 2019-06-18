@@ -29,17 +29,21 @@ module.exports = class Wolfram {
 
                     // Logs.
                     pods.map((pod) => {
-                        console.log('SECTION: ' + pod.attr('title').value())
-                        const subpods = pod.find('subpod').map((subpod) => {
-                            console.log('SUBSC: ' + subpod.attr('title').value())
-                            console.log('\t' + subpod.get('plaintext').text())
-                            console.log('\t' + subpod.get('img').attr('src').value())
+                        let title = pod.attr('title').value();
+                        console.log('SECTION: ' + title)
 
-                        })
-                    })
+                        if (title.toLowerCase().indexOf('result') > -1) {
 
-                    pods[1].find('subpod').map((subpod) => {
-                        botCtx.reply(subpod.get('plaintext').text())
+                            console.log('Sending...')
+
+                            pod.find('subpod').map((subpod) => {
+                                console.log('SUBSC: ' + subpod.attr('title').value())
+                                console.log('\t' + subpod.get('plaintext').text())
+                                console.log('\t' + subpod.get('img').attr('src').value())
+                                botCtx.reply(subpod.get('plaintext').text())
+
+                            })
+                        }
                     })
                 }
             }
