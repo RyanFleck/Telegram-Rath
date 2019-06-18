@@ -11,6 +11,7 @@ module.exports = class Wolfram {
 
         const query = `http://api.wolframalpha.com/v2/query?input=${encodeURIComponent(queryString)}&primary=true&appid=${token}`
         console.log(`Query: '${queryString}'\nAPI: ${query}`)
+        botCtx.reply('1')
 
         request(
             query,
@@ -24,17 +25,13 @@ module.exports = class Wolfram {
                 } else if (root.attr('success').value() == 'false') {
                     botCtx.reply('Hm, could you rephrase that?')
                 } else {
-
-                    const pods = root.find('pod')
-
-                    // Logs.
-                    pods.map((pod) => {
+                    botCtx.reply('2')
+                    root.find('pod').map((pod) => {
                         let title = pod.attr('title').value();
-                        console.log('SECTION: ' + title)
 
                         if (title.toLowerCase().indexOf('result') > -1) {
 
-                            console.log('Sending...')
+                            console.log('SECTION: ' + title)
 
                             pod.find('subpod').map((subpod) => {
                                 console.log('SUBSC: ' + subpod.attr('title').value())
