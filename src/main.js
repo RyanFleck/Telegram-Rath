@@ -26,7 +26,7 @@ bot.hears(/^([Rr]ath)/gm, (c) => {
     console.log(c.message)
     let msg = c.message.substring(5);
     if (msg != null && msg.length > 1) {
-        Wolfram.query(rathxp.exec(c.message.text)[1], c)
+        Wolfram.query(msg, c)
     }else{
         c.reply(Haha.haha()+' write something')
     }
