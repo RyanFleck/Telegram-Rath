@@ -14,7 +14,7 @@ bot.on('sticker', (c) => c.reply(Haha.haha()))
 bot.hears(['hi', 'hello', 'Hi', 'Hello'], (c) => c.reply(`Hello there, ${c.from.first_name}.`))
 
 bot.hears(/^.+([Rr]ath)/gm, (c) => {
-    console.log(c)
+    console.log(c.message)
     if (c.message.text.slice(-1) === '?') {
         c.reply(Yes.yes())
     } else {
@@ -23,8 +23,7 @@ bot.hears(/^.+([Rr]ath)/gm, (c) => {
 
 })
 bot.hears(/^([Rr]ath)/gm, (c) => {
-    console.log(c)
-
+    console.log(c.message)
     let msg = rathxp.exec(c.message.text)[1]
     if (msg != null && msg.length > 1) {
         Wolfram.query(rathxp.exec(c.message.text)[1], c)
