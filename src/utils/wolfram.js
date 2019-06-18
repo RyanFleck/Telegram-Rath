@@ -18,14 +18,18 @@ module.exports = class Wolfram {
                 // console.log(body)
                 const doc = xml.parseXml(body)
                 const root = doc.root()
+                console.log('Request recieved.')
 
                 botCtx.reply('Hm...')
 
                 if (root.attr('error').value() == 'true') {
                     botCtx.reply('Uh, not sure about that one.')
+                    console.log('Wolfram error.')
                 } else if (root.attr('success').value() == 'false') {
                     botCtx.reply('Hm, could you rephrase that?')
+                    console.log('Wolfram failure.')
                 } else {
+                    console.log('Success. Returning data')
                     root.find('pod').map((pod) => {
                         let title = pod.attr('title').value();
 
