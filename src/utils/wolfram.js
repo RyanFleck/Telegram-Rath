@@ -25,7 +25,8 @@ module.exports = class Wolfram {
                     botCtx.reply('Hm, could you rephrase that?')
                 } else {
                     
-                    const pods = root.find('pod').map((pod) => {
+                    // Logs.
+                    root.find('pod').map((pod) => {
                         console.log('SECTION: '+pod.attr('title').value())
                         const subpods = pod.find('subpod').map((subpod) => {
                             console.log('SUBSC: '+subpod.attr('title').value())
@@ -36,7 +37,7 @@ module.exports = class Wolfram {
                     })
 
                     const pods = root.find('pod')
-                    if (pods[1]) {
+                    if (typeof pods[1] !== 'undefined') {
                         pods[1].find('subpod').map((subpod) => {
                             botCtx.reply(subpod.get('plaintext').text())
                             // botCtx.reply("Multiple can be sent.")
