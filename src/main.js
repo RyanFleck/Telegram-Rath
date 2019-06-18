@@ -13,23 +13,26 @@ bot.on('sticker', (c) => c.reply(Haha.haha()))
 
 bot.hears(['hi', 'hello', 'Hi', 'Hello'], (c) => c.reply(`Hello there, ${c.from.first_name}.`))
 bot.hears(/^.+([Rr]ath)/gm, (c) => {
-    if( c.message.text.slice(-1) === '?' ){
+    if (c.message.text.slice(-1) === '?') {
         c.reply(Yes.yes())
-    }else{
+    } else {
         c.reply(Haha.haha())
     }
-    
+
 })
 bot.hears(/^([Rr]ath)/gm, (c) => {
-    // c.reply(`Alright, I\'ll take a look, ${c.from.first_name}. One sec.`)
-
-    Wolfram.query(rathxp.exec(c.message.text)[1], c)
+    let msg = rathxp.exec(c.message.text)[1]
+    if (msg != null && msg.length > 1) {
+        Wolfram.query(rathxp.exec(c.message.text)[1], c)
+    }else{
+        c.reply(Haha.haha()+' write something')
+    }
 })
 bot.command('marco', (c) => c.reply('Polo.'))
 
 bot.launch({
-  webhook: {
-    domain: 'https://rath.herokuapp.com',
-    port: (process.env.PORT || 5000)
-  }
+    webhook: {
+        domain: 'https://rath.herokuapp.com',
+        port: (process.env.PORT || 5000)
+    }
 })
