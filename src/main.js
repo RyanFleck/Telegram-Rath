@@ -21,7 +21,7 @@ bot.hears(/^.+([Rr]ath)/gm, (c) => {
     }
 });
 
-bot.hears(/^([Rr]athv)/gm, (c) => {
+bot.hears(/^([Rr]ath[Vv])/gm, (c) => {
     console.log(c.message);
     const msg = c.message.text;
     if (msg != null && msg.length > 5) {

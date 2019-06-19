@@ -51,7 +51,11 @@ module.exports = class Wolfram {
                                 console.log(`SUBSC: ${subpod.attr('title').value()}`);
                                 console.log(`\t${subpod.get('plaintext').text()}`);
                                 console.log(`\t${subpod.get('img').attr('src').value()}`);
-                                responseBuilder = responseBuilder.concat(`\n${subpod.get('plaintext').text()}`);
+                                if (subpod.get('plaintext').text().length > 1) {
+                                    responseBuilder = responseBuilder.concat(`${section}: ${title}`).concat(`\n${subpod.get('plaintext').text()}`);
+                                } else {
+                                    botCtx.sendPhoto(subpod.get('img').attr('src').value());
+                                }
                             });
 
                             if (responseBuilder.length > 1) { botCtx.reply(responseBuilder); }
