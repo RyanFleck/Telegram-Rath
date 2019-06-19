@@ -54,7 +54,7 @@ module.exports = class Wolfram {
                                 if (subpod.get('plaintext').text().length > 1) {
                                     responseBuilder = responseBuilder.concat(`${section}: ${title}`).concat(`\n${subpod.get('plaintext').text()}`);
                                 } else {
-                                    botCtx.sendPhoto(subpod.get('img').attr('src').value());
+                                    botCtx.replyWithPhoto(subpod.get('img').attr('src').value());
                                 }
                             });
 
