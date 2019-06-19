@@ -44,19 +44,16 @@ module.exports = class Wolfram {
                     if (verbose) {
                         let section = 1;
                         root.find('pod').forEach((pod) => {
-                            const responseBuilder = '';
+                            let responseBuilder = '';
                             const title = pod.attr('title').value();
-                            responseBuilder.concat(`${section}: ${title}`);
+                            responseBuilder = responseBuilder.concat(`${section}: ${title}`);
                             console.log(`SECTION ${section++}: ${title}`);
 
                             pod.find('subpod').forEach((subpod) => {
                                 console.log(`SUBSC: ${subpod.attr('title').value()}`);
                                 console.log(`\t${subpod.get('plaintext').text()}`);
                                 console.log(`\t${subpod.get('img').attr('src').value()}`);
-
-                                botCtx.reply(subpod.get('plaintext').text());
-
-                                responseBuilder.concat(`\n${subpod.get('plaintext').text()}`);
+                                responseBuilder = responseBuilder.concat(`\n${subpod.get('plaintext').text()}`);
                             });
 
                             if (responseBuilder.length > 1) { botCtx.reply(responseBuilder); }
