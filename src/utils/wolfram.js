@@ -57,14 +57,17 @@ module.exports = class Wolfram {
                                     }
                                     responseBuilder = responseBuilder.concat(`\n${subpod.get('plaintext').text()}`);
                                 } else {
-                                    // botCtx.replyWithPhoto(subpod.get('img').attr('src').value());
-                                    console.log(`Sending photo url: '${subpod.get('img').attr('src').value()}'`);
+                                    botCtx.replyWithPhoto(subpod.get('img').attr('src').value());
+                                    // console.log(`Sending photo url:
+                                    // '${subpod.get('img').attr('src').value()}'`);
                                     photoSent = true;
+                                    /*
                                     botCtx.telegram.sendPhoto({
                                         chat_id: botCtx.chat.id,
                                         photo: `${subpod.get('img').attr('src').value()}`,
                                         caption: responseBuilder,
                                     }).catch(console.error);
+                                    */
                                 }
                             });
 
