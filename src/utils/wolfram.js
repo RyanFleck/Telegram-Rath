@@ -43,6 +43,7 @@ module.exports = class Wolfram {
                         let section = 1;
                         root.find('pod').forEach((pod) => {
                             let responseBuilder = '';
+                            let photoSent = false;
                             const title = pod.attr('title').value();
                             console.log(`SECTION ${section++}: ${title}`);
 
@@ -57,15 +58,18 @@ module.exports = class Wolfram {
                                     responseBuilder = responseBuilder.concat(`\n${subpod.get('plaintext').text()}`);
                                 } else {
                                     // botCtx.replyWithPhoto(subpod.get('img').attr('src').value());
+                                    photoSent = true;
                                     botCtx.telegram.sendPhoto({
                                         chat_id: botCtx.chat.id,
                                         photo: subpod.get('img').attr('src').value(),
                                         caption: responseBuilder,
-                                    });
+                                    }).catch(console.error);
                                 }
                             });
 
-                            if (responseBuilder.length > 1) { botCtx.reply(responseBuilder); }
+                            if (responseBuilder.length > 1 && !photoSent) {
+                                botCtx.reply(responseBuilder);
+                            }
                         });
                     } else {
                         root.find('pod').forEach((pod) => {
