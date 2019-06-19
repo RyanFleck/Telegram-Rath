@@ -6,6 +6,17 @@ const token = process.env.BOT_WOLFRAM_ID
 module.exports = class Wolfram {
 
     static query(queryString, botCtx) {
+        this.queryGeneral(queryString, botCtx, false);
+    }
+
+    static queryVerbose(queryString, botCtx) {
+        this.queryGeneral(queryString, botCtx, true);
+    }
+
+    static queryGeneral(queryString, botCtx, verbose) {
+
+        queryString = queryString.toLowerCase().replace(/[^0-9a-zA-Z]/gi, '')
+
         if (!process.env.BOT_WOLFRAM_ID)
             return "invalid wolfram API key"
 
@@ -30,22 +41,41 @@ module.exports = class Wolfram {
                     console.log('Wolfram failure.')
                 } else {
                     console.log('Success. Returning data')
-                    root.find('pod').map((pod) => {
-                        let title = pod.attr('title').value();
 
-                        if (title.toLowerCase().indexOf('result') > -1) {
-
-                            console.log('SECTION: ' + title)
+                    if (verbose) {
+                        let section = 1;
+                        root.find('pod').map((pod) => {
+                            let responseBuilder = "";
+                            let title = pod.attr('title').value();
+                            responseBuilder.concat(`${section}: ${title}`);
+                            console.log(`SECTION ${section++}: ${title}`)
 
                             pod.find('subpod').map((subpod) => {
                                 console.log('SUBSC: ' + subpod.attr('title').value())
                                 console.log('\t' + subpod.get('plaintext').text())
                                 console.log('\t' + subpod.get('img').attr('src').value())
-                                botCtx.reply(subpod.get('plaintext').text())
-
+                                responsebuilder.concat("\n" + subpod.get('plaintext').text())
                             })
-                        }
-                    })
+
+                            botCtx.reply(responseBuilder)
+                        })
+                    } else {
+                        root.find('pod').map((pod) => {
+                            let title = pod.attr('title').value();
+
+                            if (title.toLowerCase().indexOf('result') > -1) {
+
+                                console.log('SECTION: ' + title)
+
+                                pod.find('subpod').map((subpod) => {
+                                    console.log('SUBSC: ' + subpod.attr('title').value())
+                                    console.log('\t' + subpod.get('plaintext').text())
+                                    console.log('\t' + subpod.get('img').attr('src').value())
+                                    botCtx.reply(subpod.get('plaintext').text())
+                                })
+                            }
+                        })
+                    }
                 }
             }
         )
