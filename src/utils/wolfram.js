@@ -45,7 +45,7 @@ module.exports = class Wolfram {
                             let responseBuilder = '';
                             let photoSent = false;
                             const title = pod.attr('title').value();
-                            console.log(`SECTION ${section++}: ${title}`);
+                            console.log(`SECTION: ${title}`);
 
                             pod.find('subpod').forEach((subpod) => {
                                 console.log(`SUBSC: ${subpod.attr('title').value()}`);
@@ -53,7 +53,7 @@ module.exports = class Wolfram {
                                 console.log(`\t${subpod.get('img').attr('src').value()}`);
                                 if (subpod.get('plaintext').text().length > 1) {
                                     if (title.length > 1) {
-                                        responseBuilder = responseBuilder.concat(`${section} - ${title}:`);
+                                        responseBuilder = responseBuilder.concat(`${section++} - ${title}:`);
                                     }
                                     responseBuilder = responseBuilder.concat(`\n${subpod.get('plaintext').text()}`);
                                 } else {
