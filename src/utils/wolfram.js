@@ -13,8 +13,6 @@ module.exports = class Wolfram {
     }
 
     static queryGeneral(queryString, botCtx, verbose) {
-        queryString = queryString.toLowerCase().replace(/[^0-9a-zA-Z]/gi, '');
-
         if (!process.env.BOT_WOLFRAM_ID) { return 'invalid wolfram API key'; }
 
         const query = `http://api.wolframalpha.com/v2/query?input=${encodeURIComponent(queryString)}&primary=true&appid=${token}`;
@@ -79,5 +77,7 @@ module.exports = class Wolfram {
                 console.timeEnd('wolfram');
             },
         );
+
+        return 0;
     }
 };
