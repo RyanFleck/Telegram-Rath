@@ -2,7 +2,7 @@ const yesOptions = ['yeah!', 'absolutely', 'yes', 'undeniably', 'hahahahaha, yea
 
 module.exports = class Yes {
     static yes() {
-        const opt = Math.floor(Math.random() * (yesOptions.length - 1));
+        const opt = Math.floor(Math.random() * yesOptions.length);
         return yesOptions[opt];
     }
 

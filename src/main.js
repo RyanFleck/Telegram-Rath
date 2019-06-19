@@ -47,6 +47,11 @@ bot.command('marco', (c) => {
     c.reply('Polo.');
 });
 
+bot.command('query', (c) => {
+    console.log(c.message);
+    Wolfram.queryVerbose(c.mesage.text.substring(6), c);
+});
+
 bot.launch({
     webhook: {
         domain: 'https://rath.herokuapp.com',

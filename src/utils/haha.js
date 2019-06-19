@@ -2,7 +2,7 @@ const hahaOptions = ['lmao', 'Phhblt, 🍆!', 'hahahaha', 'lmao', 'roflmao', 'lo
 
 module.exports = class Haha {
     static haha() {
-        const opt = Math.floor(Math.random() * (hahaOptions.length - 1));
+        const opt = Math.floor(Math.random() * hahaOptions.length);
         return hahaOptions[opt];
     }
 
