@@ -23,25 +23,26 @@ bot.hears(/^.+([Rr]ath)/gm, (c) => {
 
 })
 
-bot.hears(/^([Rr]ath)/gm, (c) => {
-    console.log(c.message)
-    let msg = c.message.text
-    if (msg != null && msg.length > 5) {
-        Wolfram.query(msg.substring(5), c)
-    }else{
-        c.reply(Haha.haha()+' write something')
-    }
-})
-
 bot.hears(/^([Rr]athv)/gm, (c) => {
     console.log(c.message)
     let msg = c.message.text
     if (msg != null && msg.length > 5) {
         Wolfram.queryVerbose(msg.substring(5), c)
-    }else{
-        c.reply(Haha.haha()+' write something')
+    } else {
+        c.reply(Haha.haha() + ' write something')
     }
 })
+
+bot.hears(/^([Rr]ath)/gm, (c) => {
+    console.log(c.message)
+    let msg = c.message.text
+    if (msg != null && msg.length > 5) {
+        Wolfram.query(msg.substring(5), c)
+    } else {
+        c.reply(Haha.haha() + ' write something')
+    }
+})
+
 
 bot.command('marco', (c) => c.reply('Polo.'))
 
