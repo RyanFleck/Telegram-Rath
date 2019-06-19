@@ -52,7 +52,7 @@ module.exports = class Wolfram {
                                 console.log(`\t${subpod.get('plaintext').text()}`);
                                 console.log(`\t${subpod.get('img').attr('src').value()}`);
                                 if (subpod.get('plaintext').text().length > 1) {
-                                    if (section.length > 1) {
+                                    if (title.length > 1) {
                                         responseBuilder = responseBuilder.concat(`${section} - ${title}:`);
                                     }
                                     responseBuilder = responseBuilder.concat(`\n${subpod.get('plaintext').text()}`);
