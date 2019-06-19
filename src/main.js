@@ -3,6 +3,8 @@ const Yes = require('./utils/yes')
 const Haha = require('./utils/haha')
 const Wolfram = require('./utils/wolfram')
 
+Telegraf.webhookReply = true
+
 
 const rathxp = /^[Rr]ath (.*)/gm;
 
