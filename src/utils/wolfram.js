@@ -44,7 +44,6 @@ module.exports = class Wolfram {
                         root.find('pod').forEach((pod) => {
                             let responseBuilder = '';
                             const title = pod.attr('title').value();
-                            responseBuilder = responseBuilder.concat(`${section}: ${title}`);
                             console.log(`SECTION ${section++}: ${title}`);
 
                             pod.find('subpod').forEach((subpod) => {
@@ -52,9 +51,17 @@ module.exports = class Wolfram {
                                 console.log(`\t${subpod.get('plaintext').text()}`);
                                 console.log(`\t${subpod.get('img').attr('src').value()}`);
                                 if (subpod.get('plaintext').text().length > 1) {
-                                    responseBuilder = responseBuilder.concat(`${section}: ${title}`).concat(`\n${subpod.get('plaintext').text()}`);
+                                    if (section.length > 1) {
+                                        responseBuilder = responseBuilder.concat(`${section} - ${title}:`);
+                                    }
+                                    responseBuilder = responseBuilder.concat(`\n${subpod.get('plaintext').text()}`);
                                 } else {
-                                    botCtx.replyWithPhoto(subpod.get('img').attr('src').value());
+                                    // botCtx.replyWithPhoto(subpod.get('img').attr('src').value());
+                                    botCtx.telegram.replyWithPhoto({
+                                        chat_id: botCtx.chat.id,
+                                        photo: subpod.get('img').attr('src').value(),
+                                        caption: responseBuilder,
+                                    });
                                 }
                             });
 
