@@ -42,7 +42,10 @@ bot.hears(/^([Rr]ath)/gm, (c) => {
 });
 
 
-bot.command('marco', c => c.reply('Polo.'));
+bot.command('marco', (c) => {
+    console.log(c.message);
+    c.reply('Polo.');
+});
 
 bot.launch({
     webhook: {
