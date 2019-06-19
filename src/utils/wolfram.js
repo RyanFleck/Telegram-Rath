@@ -54,7 +54,7 @@ module.exports = class Wolfram {
                                 console.log('SUBSC: ' + subpod.attr('title').value())
                                 console.log('\t' + subpod.get('plaintext').text())
                                 console.log('\t' + subpod.get('img').attr('src').value())
-                                responsebuilder.concat("\n" + subpod.get('plaintext').text())
+                                responseBuilder.concat("\n" + subpod.get('plaintext').text())
                             })
 
                             botCtx.reply(responseBuilder)
