@@ -57,7 +57,7 @@ module.exports = class Wolfram {
                                     responseBuilder = responseBuilder.concat(`\n${subpod.get('plaintext').text()}`);
                                 } else {
                                     // botCtx.replyWithPhoto(subpod.get('img').attr('src').value());
-                                    botCtx.telegram.replyWithPhoto({
+                                    botCtx.telegram.sendPhoto({
                                         chat_id: botCtx.chat.id,
                                         photo: subpod.get('img').attr('src').value(),
                                         caption: responseBuilder,
