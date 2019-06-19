@@ -1,12 +1,12 @@
-const hahaOptions = ['lmao','Phhblt, 🍆!', 'hahahaha','lmao','roflmao','lol','oh man that\'s fucking hilarious','💩💩💩'];
+const hahaOptions = ['lmao', 'Phhblt, 🍆!', 'hahahaha', 'lmao', 'roflmao', 'lol', 'oh man that\'s fucking hilarious', '💩💩💩'];
 
 module.exports = class Haha {
     static haha() {
-        var opt = Math.floor(Math.random() * (hahaOptions.length - 1))
+        const opt = Math.floor(Math.random() * (hahaOptions.length - 1));
         return hahaOptions[opt];
     }
 
-    static options(){
+    static options() {
         return hahaOptions;
     }
-}
+};

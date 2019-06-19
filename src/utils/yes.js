@@ -1,12 +1,12 @@
-const yesOptions = ['yeah!','absolutely', 'yes', 'undeniably', 'hahahahaha, yeah', 'totally', 'Is this a rhetorical question?','lololol','kek','lmao yes, haha','...yes.'];
+const yesOptions = ['yeah!', 'absolutely', 'yes', 'undeniably', 'hahahahaha, yeah', 'totally', 'Is this a rhetorical question?', 'lololol', 'kek', 'lmao yes, haha', '...yes.'];
 
 module.exports = class Yes {
     static yes() {
-        var opt = Math.floor(Math.random() * (yesOptions.length - 1))
+        const opt = Math.floor(Math.random() * (yesOptions.length - 1));
         return yesOptions[opt];
     }
 
-    static options(){
+    static options() {
         return yesOptions;
     }
-}
+};
