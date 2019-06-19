@@ -26,6 +26,8 @@ module.exports = class Wolfram {
         request(
             query,
             (error, response, body) => {
+                console.time('wolfram');
+
                 // console.log(body)
                 const doc = xml.parseXml(body)
                 const root = doc.root()
@@ -54,6 +56,8 @@ module.exports = class Wolfram {
                                 console.log('SUBSC: ' + subpod.attr('title').value())
                                 console.log('\t' + subpod.get('plaintext').text())
                                 console.log('\t' + subpod.get('img').attr('src').value())
+                                botCtx.reply(subpod.get('plaintext').text())
+
                                 responseBuilder.concat("\n" + subpod.get('plaintext').text())
                             })
                             
@@ -78,6 +82,8 @@ module.exports = class Wolfram {
                         })
                     }
                 }
+
+                console.timeEnd('wolfram');
             }
         )
     }
