@@ -56,8 +56,9 @@ module.exports = class Wolfram {
                                 console.log('\t' + subpod.get('img').attr('src').value())
                                 responseBuilder.concat("\n" + subpod.get('plaintext').text())
                             })
-
-                            botCtx.reply(responseBuilder)
+                            
+                            if( responseBuilder.length > 1)
+                                botCtx.reply(responseBuilder)
                         })
                     } else {
                         root.find('pod').map((pod) => {
