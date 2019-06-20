@@ -49,7 +49,7 @@ bot.command('marco', (c) => {
 
 bot.command('query', (c) => {
     console.log(c.message);
-    Wolfram.queryVerbose(c.mesage.text.substring(6), c);
+    c.reply('Uh, you\'re not supposed to use this yet.');
 });
 
 bot.launch({
